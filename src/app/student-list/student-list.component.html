@@ -1,0 +1,46 @@
+<div class="container">
+    <h2>STUDENT LIST</h2>
+    
+    <table class="table">
+      <thead>
+        <tr><td>
+          <a [routerLink]="['/registration']">
+            <button type="submit" style="float: right;" class="btn btn-info" >Add Student</button>
+          </a>
+        </td></tr>
+        <tr>
+          <th>Sr.No</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Course Name</th>
+          <th>Gender</th>
+          <th>Birth Date</th>
+          <th>Mobile</th>
+          <th>Address</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of student; let i = index"> 
+          <td>{{i+1}}</td>
+          <td>{{s.firstName}}</td>
+          <td>{{s.lastName}}</td>
+          <td>{{s.courseName}}</td>
+          <td>{{s.gender}}</td>
+          <td>{{s.birthDate | date:'dd-MM-yyyy'}}</td>
+          <td>{{s.mobile}}</td>
+          <td>{{s.address}}</td>
+          <td>
+            <a [routerLink]="['/registration']" [queryParams]="{id: s.id}">
+              <button type="submit" class="btn btn-info" >Edit</button>
+            </a>
+          </td>
+          <td>
+              <button type="submit" class="btn btn-info" (click)="deleteStudent(s.id)" >Delete</button>
+          </td>
+        </tr>      
+      </tbody>
+    </table>
+  </div>
+  

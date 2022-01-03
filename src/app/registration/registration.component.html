@@ -1,0 +1,74 @@
+    <form #registrationForm="ngForm" (ngSubmit)="registrationStudent(registrationForm)">
+      <h2 class="text-dnger">{{msg}}</h2>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="firstName">First Name:</label>
+        <div class="col-sm-6">
+          <input type="text" [(ngModel)]="student.firstName" class="form-control" id="firstName" placeholder="Enter first name" name="firstName"
+          (keypress)="onKeypressEvent($event,2)"
+          required #firstName="ngModel"
+          [class.is-invalid]="firstName.invalid && firstName.touched">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="lastName">Last Name:</label>
+        <div class="col-sm-6">          
+          <input type="text" [(ngModel)]="student.lastName" class="form-control" id="lastName" placeholder="Enter last name" name="lastName"
+          (keypress)="onKeypressEvent($event,2)"
+          required #lastName="ngModel"
+          [class.is-invalid]="lastName.invalid && lastName.touched">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="courseName">Course Name:</label>
+        <div class="col-sm-6">          
+          <input type="text" [(ngModel)]="student.courseName" class="form-control" id="courseName" placeholder="Enter course name" name="courseName"
+          (keypress)="onKeypressEvent($event,2)"
+          required #courseName="ngModel"
+          [class.is-invalid]="courseName.invalid && courseName.touched">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="birthdate">Birthdate</label>
+        <input [(ngModel)]="student.birthDate"
+        [max]="myDate"
+        type="date" name="birthdate" id="birthDate">
+      </div>
+
+
+      <div class="form-group">
+        <label for="birthdate">Gender:</label>
+        <div class="col-sm-6">
+      <select name="gender" id="gender" class="form-control" [(ngModel)]="student.gender">
+        <option *ngFor="let option of genderList" [value]="option" >{{option}}</option>
+    </select>
+    </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-sm-2" >Mobile:</label>
+        <div class="col-sm-6">          
+          <input type="text" (keypress)="onKeypressEvent($event,1)" [(ngModel)]="student.mobile" class="form-control" id="mobile" placeholder="Enter Mobile" name="mobile"
+          pattern="^((\\+91-?)|0)?[0-9]{10}$"
+          maxlength="10" 
+          required #mobile="ngModel"
+          [class.is-invalid]="mobile.invalid && mobile.touched">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" >Address:</label>
+        <div class="col-sm-6">          
+          <input type="text" [(ngModel)]="student.address" class="form-control" id="address" placeholder="Enter Address" name="address"
+          required #address="ngModel"
+          [class.is-invalid]="address.invalid && address.touched">
+        </div>
+      </div>
+  
+      <div class="form-group">        
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+      </div>
+    </form>
